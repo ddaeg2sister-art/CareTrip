@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:fitsSystemWindows="true" android:background="#F3F6FA">
+    <!--  버튼을 화면 상단에 고정: 아래 내용을 스크롤해도 항상 보임  -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#E6F4F1" android:orientation="vertical" android:paddingHorizontal="18dp" android:paddingTop="10dp" android:paddingBottom="8dp">
+        <Button android:id="@+id/btnStart" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="출발하기" android:textStyle="bold"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="주행 관리 타이머 시작 · 실제 차량 시동 기능 아님" android:textColor="#526B72" android:textSize="12sp"/>
+    </LinearLayout>
+    <ScrollView android:id="@+id/main" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true" android:background="#F3F6FA">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp" android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CareTrip" android:textColor="#163B57" android:textSize="32sp" android:textStyle="bold"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="동승자 맞춤형 스마트 이동 케어" android:textSize="14sp" android:textColor="#64748B"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="22dp" android:text="현재 차량 속도" android:textColor="#163B57" android:textSize="17sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvSpeed" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:gravity="center" android:text="-- km/h" android:textColor="#177E89" android:textSize="45sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvSpeedSource" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="차량 속도 연결 전 · Pleos 연동 예정" android:textColor="#64748B" android:textSize="12sp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="누적 주행 관리 시간" android:textColor="#163B57" android:textSize="17sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvTimer" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:layout_marginTop="5dp" android:text="00:00" android:textColor="#163B57" android:textSize="46sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:padding="12dp" android:background="#DAF1ED" android:text="출발 준비 완료" android:textColor="#146B66" android:textSize="15sp" android:gravity="center" android:accessibilityLiveRegion="polite"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="동승자 유형" android:textColor="#163B57" android:textSize="18sp" android:textStyle="bold"/>
+            <RadioGroup android:id="@+id/profileGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                <RadioButton android:id="@+id/radioAdult" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="일반 동승자"/>
+                <RadioButton android:id="@+id/radioChild" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="어린이 동승자"/>
+                <RadioButton android:id="@+id/radioSensitive" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="멀미 민감 동승자"/>
+            </RadioGroup>
+            <TextView android:id="@+id/tvProfileGuide" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="12dp" android:background="#E3EDF5" android:text="유형별 안내가 이곳에 표시됩니다." android:textColor="#34495E" android:textSize="14sp"/>
+            <Button android:id="@+id/btnProfileAction" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="동승자 상태 확인"/>
+            <TextView android:id="@+id/tvLastCondition" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="상태 확인 기록 없음" android:textColor="#64748B" android:textSize="13sp" android:visibility="gone"/>
+            <Button android:id="@+id/btnReset" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="주행 시간 초기화"/>
+            <LinearLayout android:id="@+id/motionRestSection" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="18dp" android:padding="14dp" android:background="#E9F6F4" android:visibility="gone">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="휴식 상태 · 멀미 민감 동승자 전용" android:textColor="#163B57" android:textSize="18sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvRestStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:padding="10dp" android:background="#FFFFFF" android:text="출발하면 12분 간격으로 상태를 확인합니다." android:textColor="#176B65" android:textSize="15sp" android:accessibilityLiveRegion="polite"/>
+                <TextView android:id="@+id/tvSinceRest" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="최근 휴식 이후 00:00" android:textColor="#4A6572" android:textSize="14sp"/>
+                <TextView android:id="@+id/tvInterval" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="12분 자동 설정" android:textSize="20sp" android:gravity="center" android:textColor="#177E89" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvTarget" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:gravity="center" android:text="멀미 상태 확인: 12분마다" android:textSize="15sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="12분은 연구에서 보고된 첫 증상 발생 시간(10~15분)을 참고한 앱 설정이며, 의학적 권장 휴식 주기는 아닙니다." android:textColor="#586D73" android:textSize="12sp"/>
+                <Button android:id="@+id/btnTest" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="20초 테스트 모드 켜기 (멀미 민감 전용)"/>
+                <Button android:id="@+id/btnRest" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="휴식 완료 기록"/>
+                <TextView android:id="@+id/tvRestCount" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:gravity="center" android:text="휴식 완료: 0회" android:textColor="#163B57" android:textSize="16sp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:text="최근 휴식 기록" android:textColor="#163B57" android:textSize="16sp" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvHistory" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:padding="12dp" android:background="#FFFFFF" android:text="휴식 완료 기록이 없습니다." android:textColor="#64748B" android:textSize="14sp"/>
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="휴식 장소 안내" android:textColor="#163B57" android:textSize="18sp" android:textStyle="bold"/>
+            <Button android:id="@+id/btnFindRestStop" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="휴식 경유지 연동 (준비 중)"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Smart Comfort Mode" android:textColor="#163B57" android:textSize="20sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/tvGuide" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="정차가 어려운 상황에서는 공조 조절 안내와 안전한 휴식 장소 탐색을 지원합니다. 실제 차량 제어는 아직 연결되지 않았습니다." android:textColor="#475569" android:textSize="15sp"/>
+            <Button android:id="@+id/btnComfort" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="컴포트 케어 안내"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:layout_marginBottom="20dp" android:gravity="center" android:text="안전한 정차 후 조작하세요. 운전 중 화면 조작은 피해주세요." android:textSize="12sp" android:textColor="#64748B"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
